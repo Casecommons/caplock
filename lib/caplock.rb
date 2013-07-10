@@ -58,8 +58,7 @@ module Capistrano
         end
 
         # Deployment
-        before "deploy", "lock:check"
-        after "lock:check", "lock:create"
+        before "deploy", "lock:check", "lock:create"
         after "deploy", "lock:release"
 
         # Rollback
