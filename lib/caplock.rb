@@ -40,7 +40,7 @@ module Capistrano
           desc "check lock"
           task :check, :roles => :app do
             if caplock.remote_file_exists?("#{deploy_to}/#{lockfile}")
-              abort "\n\n\n\e[0;31m A Deployment is already in progress\n Remove #{deploy_to}/#{lockfile} to unlock  \e[0m\n\n\n"
+              abort %(\n\n\n\e[0;31m A Deployment may already be in progress!\nRun "cap lock:release" to unlock. \e[0m\n\n\n)
             end
           end
 
